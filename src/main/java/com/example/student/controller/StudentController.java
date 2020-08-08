@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -25,6 +26,12 @@ public class StudentController {
     @PostMapping("/addStudent")
     public String addStudent(Student student) {
         studentService.saveStudent(student);
+        return "redirect:/students";
+    }
+
+    @GetMapping("/{id}")
+    public String removeStudent(@PathVariable String id) {
+        studentService.removeStudent(id);
         return "redirect:/students";
     }
 }
