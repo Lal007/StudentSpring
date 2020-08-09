@@ -34,4 +34,10 @@ public class StudentController {
         studentService.removeStudent(id);
         return "redirect:/students";
     }
+
+    @GetMapping("update/{id}")
+    public String updateStudent(@PathVariable String id, Model model) {
+        model.addAttribute("student", studentService.getStudentById(Long.valueOf(id)));
+        return "updateStudent";
+    }
 }
