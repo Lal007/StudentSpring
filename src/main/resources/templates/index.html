@@ -19,6 +19,7 @@
             <th>Id</th>
             <th>Имя</th>
             <th>Оценка</th>
+            <th>Действие</th>
         </tr>
         </thead>
         <tbody>
@@ -27,10 +28,15 @@
             <td th:text="${student.id}"/>
             <td th:text="${student.name}"/>
             <td th:text="${student.mark}"/>
+            <td>
+                <a th:href="@{'/students/' + ${student.id}}">Удалить студента</a>
+                <a th:href="@{'/students/update/' + ${student.id}}">Изменить студента</a>
+            </td>
         </tr>
         </tbody>
     </table>
     <hr>
+    <h2>Добавить</h2>
     <form action="#" th:action="@{/students/addStudent}" method="POST" enctype="multipart/form-data">
         <div class="form-row">
             <div class="form-group col-md-3">
